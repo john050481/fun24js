@@ -1,0 +1,24 @@
+{
+  "name": "fun24js",
+  "version": "0.1.1",
+  "description": "functions for js",
+  "main": "fun24js.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john050481/fun24js.git"
+  },
+  "keywords": [
+    "functions",
+    "js",
+    "javascript"
+  ],
+  "author": "john0504",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/john050481/fun24js/issues"
+  },
+  "homepage": "https://github.com/john050481/fun24js#readme"
+}
