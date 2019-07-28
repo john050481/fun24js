@@ -52,14 +52,17 @@
     let value = obj;
     for (let i = 0; i <= arrKeys.length - 1; i++) {
       let key = arrKeys[i];
-      if (value.hasOwnProperty(key)) {
-        value = value[key]
-      } else {
-        return {found: false, value: null}
+      if (isObject(value)) {
+        if (value.hasOwnProperty(key)) {
+          value = value[key];
+          continue;
+        };
       };
+      return {found: false, value: null}
     };
     return {found: true, value};
   };
+
   //-------------------------------------------------------------------------------------
   /**
   * The function sets the value of the object property at the specified path.
