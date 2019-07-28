@@ -5,8 +5,6 @@
 'use strict';
 
 (function(){
-  var version = '0.1.2';
-
   //-------------------------------------------------------------------------------------
   function isNull(value) {
     return value === null;
@@ -104,7 +102,6 @@
   }
   //-------------------------------------------------------------------------------------
   var fun24js = {
-    version: version,
     isNull: isNull,
     isObject: isObject,
     getPropertyValue: getPropertyValue,
