@@ -6,10 +6,16 @@
 
 (function(){
   //-------------------------------------------------------------------------------------
+  /**
+  * Value is null?
+  */
   function isNull(value) {
     return value === null;
   };
   //-------------------------------------------------------------------------------------
+  /**
+  * Value is object?
+  */
   function isObject (obj) {
     if (typeof(obj) === "object" && !isNull(obj) ) { return true };
     return false;
@@ -53,7 +59,7 @@
       };
     };
     return {found: true, value};
-  }
+  };
   //-------------------------------------------------------------------------------------
   /**
   * The function sets the value of the object property at the specified path.
@@ -99,14 +105,14 @@
       };
     };
     return true;
-  }
+  };
   //-------------------------------------------------------------------------------------
   var fun24js = {
     isNull: isNull,
     isObject: isObject,
     getPropertyValue: getPropertyValue,
     setPropertyValue: setPropertyValue
-  }
+  };
 
   module.exports = fun24js;
 
