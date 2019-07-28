@@ -17,21 +17,29 @@
     return false;
   };
   //-------------------------------------------------------------------------------------
-  /*
-  EXAMPLE work 'getPropertyValue' for object:
-  let obj = { Id: "100", Name: "John", Address: { Id: 1, Name: "Russia" }, Null: null }
-
-  console.log(getPropertyValue(obj, "Name"));//{ found: true, value: 'John' }
-  console.log(getPropertyValue(obj, "Id"));//{ found: true, value: '100' }
-  console.log(getPropertyValue(obj, "Address.Name"));//{ found: true, value: 'Russia' }
-  console.log(getPropertyValue(obj, "Address.Id"));//{ found: true, value: 1 }
-  console.log(getPropertyValue(obj, "Address.Idsd"));//{ found: false, value: null }
-  console.log(getPropertyValue(obj, "Addre.Idsd"));//{ found: false, value: null }
-  console.log(getPropertyValue(obj, "Idsd"));//{ found: false, value: null }
-  console.log(getPropertyValue('obj', "Null"));//{ found: false, value: null }
-  console.log(getPropertyValue(1, "Null"));//{ found: false, value: null }
-  console.log(getPropertyValue(null, 'fdfd'));//{ found: false, value: null }
-  console.log(getPropertyValue(obj, "Null"));//{ found: true, value: null }
+  /**
+  * The function gets the property value of the object at the specified path.
+  *
+  * @param {object} obj The object whose property you want to get
+  * @param {string} path Path, string 'prop1.prop2.prop3', separator '.'
+  * @return {object} {found: false/true, value: value/null}
+  *   @return {found} The result of obtaining the property. true - the property is in the object. false - no properties
+  *   @return {value} Property value or null
+  *
+  * EXAMPLE work 'getPropertyValue' for object:
+  * let obj = { Id: "100", Name: "John", Address: { Id: 1, Name: "Russia" }, Null: null }
+  *
+  * console.log(getPropertyValue(obj, "Name"));//{ found: true, value: 'John' }
+  * console.log(getPropertyValue(obj, "Id"));//{ found: true, value: '100' }
+  * console.log(getPropertyValue(obj, "Address.Name"));//{ found: true, value: 'Russia' }
+  * console.log(getPropertyValue(obj, "Address.Id"));//{ found: true, value: 1 }
+  * console.log(getPropertyValue(obj, "Address.Idsd"));//{ found: false, value: null }
+  * console.log(getPropertyValue(obj, "Addre.Idsd"));//{ found: false, value: null }
+  * console.log(getPropertyValue(obj, "Idsd"));//{ found: false, value: null }
+  * console.log(getPropertyValue('obj', "Null"));//{ found: false, value: null }
+  * console.log(getPropertyValue(1, "Null"));//{ found: false, value: null }
+  * console.log(getPropertyValue(null, 'fdfd'));//{ found: false, value: null }
+  * console.log(getPropertyValue(obj, "Null"));//{ found: true, value: null } !!! pay attention to this result !!!
   */
   function getPropertyValue (obj, path) {
     if (!isObject(obj)) { return {found: false, value: null} };
@@ -49,13 +57,21 @@
     return {found: true, value};
   }
   //-------------------------------------------------------------------------------------
-  /*
-  EXAMPLE work 'setPropertyValue' for object:
-  let obj = { a: {  b:{ c:{ d:1 }, c1:1 }, b1: 1 }, a1: 1 };
-
-  console.log(setPropertyValue(obj, 222, "a.b.c"));//return true, obj = { a: { b: { c: 222, c1: 1 }, b1: 1 }, a1: 1 }
-  console.log(setPropertyValue(obj, 222, "a.b.cc", true));//return true, obj = { a: { b: { c: {d: 1}, c1: 1, cc: 222 }, b1: 1 }, a1: 1 }
-  console.log(setPropertyValue(obj, 222, "a.b.cc", false));//return false, obj = without changes
+  /**
+  * The function sets the value of the object property at the specified path.
+  *
+  * @param {object} obj The object whose property you want to set
+  * @param {any} value Value to set property
+  * @param {string} path Path, string 'prop1.prop2.prop3', separator '.'
+  * @param {boolean} createProp If the property is not found, create it and set the value (if 'createProp=true')
+  * @return {boolean} Function result
+  *
+  * EXAMPLE work 'setPropertyValue' for object:
+  * let obj = { a: {  b: { c: { d: 1 }, c1: 1 }, b1: 1 }, a1: 1 };
+  *
+  * console.log(setPropertyValue(obj, 222, "a.b.c"));//return true, obj = { a: { b: { c: 222, c1: 1 }, b1: 1 }, a1: 1 }
+  * console.log(setPropertyValue(obj, 222, "a.b.cc", true));//return true, obj = { a: { b: { c: {d: 1}, c1: 1, cc: 222 }, b1: 1 }, a1: 1 }
+  * console.log(setPropertyValue(obj, 222, "a.b.cc", false));//return false, obj = without changes
   */
   function setPropertyValue (obj, value, path, createProp=true) {
     if (!isObject(obj)) { return false };
